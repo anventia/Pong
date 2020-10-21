@@ -1,6 +1,8 @@
 void mouseReleased() {
   if (mode == INTRO) {
     introClick();
+  } else if (mode == SELECTION) {
+    selectionClick();
   } else if (mode == GAME) {
     gameClick();
   } else if (mode == PAUSE) {

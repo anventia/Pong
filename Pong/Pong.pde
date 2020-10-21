@@ -1,10 +1,11 @@
 // Pong
 
-int mode;                // Modes
-final int INTRO    = 0;  //
-final int GAME     = 1;  //
-final int PAUSE    = 2;  //
-final int GAMEOVER = 3;  //
+int mode;                 // Modes
+final int INTRO     = 0;  //
+final int SELECTION = 1;  //
+final int GAME      = 2;  //
+final int PAUSE     = 3;  //
+final int GAMEOVER  = 4;  //
 
 int players = 2;  // Number of players
 
@@ -20,10 +21,11 @@ color left  = #2EE1FF;
 color right = #E46BF7;
 color ball = #824DFF;
 
-color lightgrey   = 245;
-color darkgrey    = 220;
-color darkergrey  = 200;
-color darkestgrey = 180;
+color lightgrey      = 245;
+color darkgrey       = 220;
+color darkergrey     = 200;
+color darkestgrey    = 180;
+color darkestestgrey = 150;
 
 boolean keyW, keyS     = false;  // Left paddle keys
 boolean keyUp, keyDown = false;  // Right
@@ -35,7 +37,7 @@ int fade = 60;
 
 void setup() {
   size(1280,720);
-  mode = GAME;
+  mode = INTRO;
   Montserrat = createFont("Montserrat-Regular.ttf", 100);
   MontserratMedium = createFont("Montserrat-Medium.ttf", 100);
   gameSetup();
@@ -49,6 +51,8 @@ void setup() {
 void draw() {
   if (mode == INTRO) {
     intro();
+  } else if (mode == SELECTION) {
+    selection();
   } else if (mode == GAME) {
     game();
   } else if (mode == PAUSE) {
