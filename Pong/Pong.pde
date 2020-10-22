@@ -3,24 +3,27 @@
 int mode;                 // Modes
 final int INTRO     = 0;  //
 final int SELECTION = 1;  //
-final int GAME      = 2;  //
-final int PAUSE     = 3;  //
-final int GAMEOVER  = 4;  //
+final int PLAYERS   = 2;  //
+final int GAME      = 3;  //
+final int PAUSE     = 4;  //
+final int GAMEOVER  = 5;  //
 
 int players = 2;  // Number of players
+int balls = 1;    // Number of balls
 
 int leftScore = 0;
 int rightScore = 0;
-int winningScore = 3;
+int winningScore = 1;
 
-float leftX, leftY, leftD, leftS;           // X, Y, Diameter, Speed
-float rightX, rightY, rightD, rightS;       //
-float ballX, ballY, ballD, ballSX, ballSY;  //
+float leftX,  leftY,  leftD,  leftS;             // X, Y, Diameter, Speed
+float rightX, rightY, rightD, rightS;            //
+float ballX,  ballY,  ballD,  ballSX, ballSY;    //
+float ball2X, ball2Y, ball2D, ball2SX, ball2SY;  //
 
 color left  = #2EE1FF;
-color right = #E46BF7;
-color ball = #824DFF;
-
+color right = #E46BF7; 
+color ball  = #824DFF;
+color ball2 = #2EFF6B;
 color lightgrey      = 245;
 color darkgrey       = 220;
 color darkergrey     = 200;
@@ -53,6 +56,8 @@ void draw() {
     intro();
   } else if (mode == SELECTION) {
     selection();
+  } else if (mode == PLAYERS) {
+    players();
   } else if (mode == GAME) {
     game();
   } else if (mode == PAUSE) {
