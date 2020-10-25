@@ -1,3 +1,17 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim;
+AudioPlayer introTheme;
+AudioPlayer leftB;
+AudioPlayer rightB;
+AudioPlayer wallB;
+AudioPlayer scoreS;
+
 // Pong
 
 int mode;                 // Modes
@@ -13,7 +27,9 @@ int balls = 1;    // Number of balls
 
 int leftScore = 0;
 int rightScore = 0;
-int winningScore = 1;
+int winningScore = 1000;
+
+int timer = 100;
 
 float leftX,  leftY,  leftD,  leftS;             // X, Y, Diameter, Speed
 float rightX, rightY, rightD, rightS;            //
@@ -39,7 +55,14 @@ PFont MontserratMedium;
 int fade = 60;
 
 void setup() {
+  frameRate(120);
   size(1280,720);
+  minim = new Minim(this);
+  leftB = minim.loadFile("leftpaddle.wav");
+  rightB = minim.loadFile("rightpaddle.wav");
+  wallB = minim.loadFile("wall.wav");
+  scoreS = minim.loadFile("score.wav");
+
   mode = INTRO;
   Montserrat = createFont("Montserrat-Regular.ttf", 100);
   MontserratMedium = createFont("Montserrat-Medium.ttf", 100);
