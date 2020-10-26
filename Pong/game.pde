@@ -75,33 +75,17 @@ void game() {
       if (ballX > ball2X) {
         if (dist(0,ballY, 0,rightY) > rightD/2) {
           if (ballY < rightY) {
-            if (dist(0,ballY, 0,rightY) <= rightS) {
-              rightY -= dist(0,ballY, 0,rightY);
-            } else {
-              rightY -= rightS;
-            }
+            rightY -= rightS;
           } else {
-            if (dist(0,ballY, 0,rightY) <= rightS) {
-              rightY += dist(0,ballY, 0,rightY);
-            } else {
-              rightY += rightS;
-            }
+            rightY += rightS;
           }
         }
       } else {
         if (dist(0,ball2Y, 0,rightY) > rightD/2) {
           if (ball2Y < rightY) {
-            if (dist(0,ball2Y, 0,rightY) <= rightS) {
-              rightY -= dist(0,ball2Y, 0,rightY);
-            } else {
-              rightY -= rightS;
-            }
+            rightY -= rightS;
           } else {
-            if (dist(0,ball2Y, 0,rightY) <= rightS) {
-              rightY += dist(0,ball2Y, 0,rightY);
-            } else {
-              rightY += rightS;
-            }
+            rightY += rightS;
           }
         }
       }
