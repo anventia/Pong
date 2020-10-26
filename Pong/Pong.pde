@@ -12,6 +12,7 @@ AudioPlayer rightB;
 AudioPlayer wallB;
 AudioPlayer scoreS;
 
+
 // Pong
 
 int mode;                 // Modes
@@ -27,7 +28,7 @@ int balls = 1;    // Number of balls
 
 int leftScore = 0;
 int rightScore = 0;
-int winningScore = 1000;
+int winningScore = 5;
 
 int timer = 100;
 
@@ -55,13 +56,16 @@ PFont MontserratMedium;
 int fade = 60;
 
 void setup() {
-  frameRate(120);
+  //frameRate(120); // Makes everything faster
   size(1280,720);
   minim = new Minim(this);
+  introTheme = minim.loadFile("intro.mp3");
   leftB = minim.loadFile("leftpaddle.wav");
   rightB = minim.loadFile("rightpaddle.wav");
   wallB = minim.loadFile("wall.wav");
   scoreS = minim.loadFile("score.wav");
+  introTheme.loop();
+
 
   mode = INTRO;
   Montserrat = createFont("Montserrat-Regular.ttf", 100);

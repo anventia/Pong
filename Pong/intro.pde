@@ -1,6 +1,8 @@
 int introY = -100;
 
 void intro() {
+  introTheme.play();
+  //introTheme.loop();
   if (fade == 60) introY = -100;  // Reset animation
   fill(lightgrey, 10);
   stroke(lightgrey, 10);

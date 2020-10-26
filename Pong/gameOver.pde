@@ -53,7 +53,7 @@ void gameOver() {
     // Score
     fill(darkestgrey);
     textSize(50);
-    text("Score: "+leftScore+" / "+rightScore, scoretext,360);
+    text("Score: "+leftScore+" - "+rightScore, scoretext,360);
     scoretext += 30;
     if (scoretext > 255) scoretext = 255;
         

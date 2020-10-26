@@ -22,10 +22,12 @@ void gameSetup() {
   ball2Y = height/2;
   ball2D = 50;
   ball2SX = -7;
-  ball2SY = random(-2,2);;
+  ball2SY = ballSY*-1;
 }
 
 void game() {
+  introTheme.rewind();
+  introTheme.pause();
   gameBackground();
   timer -= 2;
   if (timer < 0) timer = 0;
@@ -232,7 +234,7 @@ void leftPoint() {
   ball2X = width/2-60;
   ball2Y = height/2;
   ball2SX = -7;
-  ball2SY = random(-2,2);
+  ball2SY = ballSY*-1;
 }
 
 void rightPoint() {
@@ -242,7 +244,7 @@ void rightPoint() {
   rightScore += 1;
   leftY = height/2;
   rightY = height/2;
-  ballX = width/2;
+  ballX = width/2-60;
   ballY = height/2;
   ballSX = -7;
   ballSY = random(-2,2);
@@ -250,7 +252,7 @@ void rightPoint() {
   ball2X = width/2+60;
   ball2Y = height/2;
   ball2SX = 7;
-  ball2SY = random(-2,2);
+  ball2SY = ballSY*-1;
 }
 
 void gameBackground() {
