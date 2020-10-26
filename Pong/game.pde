@@ -63,45 +63,61 @@ void game() {
   // MOVEMENT //
   
   // paddles
-  if (players == 1 || players == 2) {
+  if (players == 1 || players == 2) {  //  If 1 or 2 players, player controls left paddle
     if (keyW == true) leftY -= leftS;
     if (keyS == true) leftY += leftS;
   } 
-  if (players == 2) {
+  if (players == 2) {  // If 2 players, player controls right paddle
     if (keyUp == true) rightY -= leftS;
     if (keyDown == true) rightY += leftS;
-  } else {
+  } else { // If 1 or 0 players, AI controls the right paddle
     if (ballX > width/2 || ball2X > width/2) {
       if (ballX > ball2X) {
         if (dist(0,ballY, 0,rightY) > rightD/2) {
           if (ballY < rightY) {
-            rightY -= rightS;
+            if (dist(0,ballY, 0,rightY) <= rightS) {
+              rightY -= dist(0,ballY, 0,rightY);
+            } else {
+              rightY -= rightS;
+            }
           } else {
-            rightY += rightS;
+            if (dist(0,ballY, 0,rightY) <= rightS) {
+              rightY += dist(0,ballY, 0,rightY);
+            } else {
+              rightY += rightS;
+            }
           }
         }
       } else {
         if (dist(0,ball2Y, 0,rightY) > rightD/2) {
           if (ball2Y < rightY) {
-            rightY -= rightS;
+            if (dist(0,ball2Y, 0,rightY) <= rightS) {
+              rightY -= dist(0,ball2Y, 0,rightY);
+            } else {
+              rightY -= rightS;
+            }
           } else {
-            rightY += rightS;
+            if (dist(0,ball2Y, 0,rightY) <= rightS) {
+              rightY += dist(0,ball2Y, 0,rightY);
+            } else {
+              rightY += rightS;
+            }
           }
         }
       }
     }
   }
-  if (players == 0) {
-    if (ballX < width/2 || ball2X < width/2) {
-      if (ballX < ball2X) {
-        if (dist(0,ballY, 0,leftY) > leftD/2) {
-          if (ballY < leftY) {
+  if (players == 0) {  // If no players ( the below statements are the same in other numbers of players, and for ball 1/2
+    if (ballX < width/2 || ball2X < width/2) {  // If a ball is on the correct side of the screen
+      if (ballX < ball2X) {  // If ball 1 is closer
+        if (dist(0,ballY, 0,leftY) > leftD/2) {  // If the ball is far enough from the paddle that it will miss
+          if (ballY < leftY) {  // If the ball is above paddle
             leftY -= leftS;
-          } else {
+          } else {  // If the ball is below paddle
             leftY += leftS;
           }
         }
-      } else {
+      } else {  // If ball 2 is closer
         if (dist(0,ball2Y, 0,leftY) > leftD/2) {
           if (ball2Y < leftY) {
             leftY -= leftS;
